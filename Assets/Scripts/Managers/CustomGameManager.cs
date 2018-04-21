@@ -26,10 +26,13 @@ public class CustomGameManager : Singleton<CustomGameManager>
     #region Private methods
     private IEnumerator StartGame()
     {
-        LoadScene(ConstScenes.GAME);
+        //Стартовый прелоадер
+        yield return CustomUIManager.Instance.ShowSplashScreenCoroutine(ConstPrefabs.UI_SPLASH_STARTING);
+        yield return new WaitForSeconds(1.0f);
 
+        LoadScene(ConstScenes.GAME);
         //while (!SpaceController.Instance.isInit)
-            yield return null;
+        
     }
 
     private IEnumerator LoadSceneCoroutine(string _scene, LoadSceneMode _mode)

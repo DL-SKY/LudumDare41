@@ -84,13 +84,12 @@ public class CustomUIManager : Singleton<CustomUIManager>
     #endregion
 
     #region Coroutines
-    private IEnumerator ShowSplashScreenCoroutine(string _name)
+    public IEnumerator ShowSplashScreenCoroutine(string _name)
     {
         if (splashScreen)
             Destroy(splashScreen);
 
-        var path = "Prefabs/SplashScreens";
-        splashScreen = Instantiate(Resources.Load<GameObject>(Path.Combine(path, _name)), parentSplashScreen);
+        splashScreen = Instantiate(Resources.Load<GameObject>(_name), parentSplashScreen);
         splashScreen.transform.SetAsLastSibling();
 
         yield return splashScreen.GetComponent<ScreenController>().WaitShowSplashScreen();

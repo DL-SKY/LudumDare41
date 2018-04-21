@@ -6,18 +6,16 @@ public class SpaceController : Singleton<SpaceController>
 {
     #region Variables
     public bool isInit = false;
+    public bool isPlayerTurn = false;    
 
     //public int maxCountCube;
     public float percentCube = 5.0f;
 
     public int countVoxels;
     public int countVoid;
-    public int countCube;
-
+    public int countCube;    
+    private List<SpaceObjects> objects = new List<SpaceObjects>();
     private Transform space;
-    
-
-    
     #endregion
 
     #region Unity methods
@@ -27,10 +25,21 @@ public class SpaceController : Singleton<SpaceController>
 
         Generate();
         isInit = true;
+
+        //TODO:
+        CustomUIManager.Instance.CloseSplashScreen();
     }
     #endregion
 
     #region Public methods
+    public void EndPlayerTurn()
+    {
+        isPlayerTurn = false;
+
+        //...
+
+        isPlayerTurn = true;
+    }
     #endregion
 
     #region Private methods
@@ -40,6 +49,10 @@ public class SpaceController : Singleton<SpaceController>
         //Очищаем игровое поле
         for (int i = 0; i < space.childCount; i++)
             Destroy(space.GetChild(i).gameObject);
+
+        //isPlayerTurn = false;
+        isPlayerTurn = true;
+        objects.Clear();
 
         //Обнуляем счетчики
         countVoxels = 0;
@@ -57,16 +70,6 @@ public class SpaceController : Singleton<SpaceController>
                     countVoxels++;
 
                     float random = Random.Range(0.0f, 100.0f);
-                    /*switch (random)
-                    {
-                        case (int)EnumSpaceObject.Void:
-                            break;
-                        case (int)EnumSpaceObject.Cube:
-                            countCube++;
-                            if (countCube > maxCountCube)
-                                random = 0;
-                            break;
-                    }*/
 
                     if (random <= percentCube)
                         random = (float)EnumSpaceObject.Cube;

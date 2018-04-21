@@ -27,6 +27,11 @@ public class ScreenController : MonoBehaviour
     #endregion
 
     #region Unity methods
+    private void Start()
+    {
+        if (type == ScreenType.SplashScreen)
+            Initialize();
+    }
     #endregion
 
     #region Public methods

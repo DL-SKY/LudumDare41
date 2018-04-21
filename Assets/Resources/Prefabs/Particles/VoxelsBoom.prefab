@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198480826053614450}
   - component: {fileID: 199711017802080898}
   m_Layer: 0
-  m_Name: Voxels
+  m_Name: VoxelsBoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
