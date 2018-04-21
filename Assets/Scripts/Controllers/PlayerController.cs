@@ -6,17 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     #region Variables
 
-    [SerializeField]
-    private Rigidbody rg;
+    private SpaceObjects thisObject;
     #endregion
 
-    #region Unity method
+    #region Unity method  
     private void Start()
     {
-        rg = GetComponent<Rigidbody>();
-
-        if (rg == null)
-            rg = gameObject.AddComponent<Rigidbody>();
+        thisObject = GetComponent<SpaceObjects>();
     }
 
     private void Update()
@@ -24,64 +20,73 @@ public class PlayerController : MonoBehaviour
         //Вперед
         if (Input.GetKeyDown(KeyCode.W))
         {
-            ToForward();
+            thisObject.ToForward();
         }
-        //Назад
+        //Тангаж вверх
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            ToBackward();
+            thisObject.ToPitchUp();
         }
-        //Повернуться налево
+        //Тангаж вниз
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            thisObject.ToPitchDown();
+        }
+        //Рыскание налево
         else if (Input.GetKeyDown(KeyCode.A))
         {
-            ToLeft();
+            thisObject.ToYawLeft();
         }
-        //Повернуться направо
+        //Рыскание направо
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            ToRight();
+            thisObject.ToYawRight();
         }
+        //Крен влево
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            thisObject.ToRollLeft();
+        }
+        //Крен вправо
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
+            thisObject.ToRollRight();
+        }
+
+        //1
+        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            thisObject.ToUse1();
+        }
+        //2
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            thisObject.ToUse1();
+        }
+        //3
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            thisObject.ToUse1();
+        }
+        //4
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            thisObject.ToUse1();
+        }
+        //5
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            thisObject.ToUse1();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //Debug.Log("Trigger Enter");
     }
     #endregion
 
-    #region Public methods
-    public void ToForward()
-    {
-        Debug.Log("Forward");
-
-        var newPosition = transform.position + transform.forward * Constants.cellSize;
-        newPosition = new Vector3(  Mathf.RoundToInt(newPosition.x),
-                                    Mathf.RoundToInt(newPosition.y),
-                                    Mathf.RoundToInt(newPosition.z)  );
-        rg.MovePosition(newPosition);
-    }
-
-    public void ToBackward()
-    {
-        Debug.Log("Backward");
-
-        var newPosition = transform.position - transform.forward * Constants.cellSize;
-        newPosition = new Vector3(  Mathf.RoundToInt(newPosition.x),
-                                    Mathf.RoundToInt(newPosition.y),
-                                    Mathf.RoundToInt(newPosition.z)  );
-        rg.MovePosition(newPosition);
-    }
-
-    public void ToLeft()
-    {
-        Debug.Log("Left");
-
-        var deltaRotation = Quaternion.AngleAxis(-90, Vector3.up);
-        rg.rotation *= deltaRotation;
-    }
-
-    public void ToRight()
-    {
-        Debug.Log("Right");
-
-        var deltaRotation = Quaternion.AngleAxis(90, Vector3.up);
-        rg.rotation *= deltaRotation;
-    }
+    #region Public methods    
     #endregion
 
     #region Private methods

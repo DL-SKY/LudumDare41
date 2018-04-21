@@ -220,9 +220,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Constants\Constants.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CameraController.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\SpaceController.cs" />
     <Compile Include="Assets\Scripts\Managers\CustomEventManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\CustomGameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\CustomUIManager.cs" />
+    <Compile Include="Assets\Scripts\Objects\SpaceObjects.cs" />
     <Compile Include="Assets\Scripts\Patterns\Singleton.cs" />
     <Compile Include="Assets\Scripts\UI\ScreenController.cs" />
   </ItemGroup>
