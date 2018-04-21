@@ -20,6 +20,11 @@ public class SpaceObjects : MonoBehaviour
         if (rg == null)
             rg = gameObject.AddComponent<Rigidbody>();
     }
+
+    private void OnDestroy()
+    {
+        
+    }
     #endregion
 
     #region Public methods
@@ -54,7 +59,6 @@ public class SpaceObjects : MonoBehaviour
         if (!isEndAnimation)
             return;
 
-
         var deltaRotation = Quaternion.AngleAxis(-90, Vector3.right);
         rg.rotation *= deltaRotation;
     }
@@ -63,7 +67,6 @@ public class SpaceObjects : MonoBehaviour
     {
         if (!isEndAnimation)
             return;
-
 
         var deltaRotation = Quaternion.AngleAxis(90, Vector3.right);
         rg.rotation *= deltaRotation;
@@ -107,7 +110,19 @@ public class SpaceObjects : MonoBehaviour
 
     public void ToUse1()
     {
+        if (!isEndAnimation)
+            return;
 
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, ConstGame.RAY_COEF_U1 * ConstGame.CELL_SIZE))
+        {
+            if (hit.collider.tag == "Block")
+            {
+                var controller = hit.collider.GetComponent<SpaceObjects>();
+                if (controller)
+                    controller.GetDamage();
+            }
+        }
     }
 
     public void ToUse2()
@@ -128,6 +143,12 @@ public class SpaceObjects : MonoBehaviour
     public void ToUse5()
     {
 
+    }
+
+    public void GetDamage()
+    {
+        Instantiate(Resources.Load<GameObject>(ConstPrefabs.PARTICLES_VOXELS), transform.position, Quaternion.identity, transform.parent);
+        Destroy(this.gameObject);
     }
     #endregion
 
