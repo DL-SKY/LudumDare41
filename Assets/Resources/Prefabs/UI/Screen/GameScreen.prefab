@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224240089014130716}
   - component: {fileID: 222754742083196196}
   - component: {fileID: 114856073662861278}
+  - component: {fileID: 114499230050784640}
   m_Layer: 5
   m_Name: KEYS
   m_TagString: Untagged
@@ -38,6 +39,7 @@ GameObject:
   - component: {fileID: 224025457717500506}
   - component: {fileID: 222441228500770204}
   - component: {fileID: 114127676226828972}
+  - component: {fileID: 114839258812101792}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -71,6 +73,7 @@ GameObject:
   - component: {fileID: 224498008326246732}
   - component: {fileID: 222320745133981608}
   - component: {fileID: 114171418062651732}
+  - component: {fileID: 114447483580993688}
   m_Layer: 5
   m_Name: waiting
   m_TagString: Untagged
@@ -104,6 +107,7 @@ GameObject:
   - component: {fileID: 222200075484685332}
   - component: {fileID: 114719142921251138}
   - component: {fileID: 114208316420202824}
+  - component: {fileID: 114154650491185852}
   m_Layer: 5
   m_Name: Hint
   m_TagString: Untagged
@@ -121,6 +125,7 @@ GameObject:
   - component: {fileID: 224829689143425566}
   - component: {fileID: 222429558213083684}
   - component: {fileID: 114571026639506014}
+  - component: {fileID: 114863065513312816}
   m_Layer: 5
   m_Name: Ammo
   m_TagString: Untagged
@@ -138,6 +143,7 @@ GameObject:
   - component: {fileID: 224574495243676578}
   - component: {fileID: 222366021467159498}
   - component: {fileID: 114066193028409370}
+  - component: {fileID: 114330492290742606}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -241,6 +247,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'TURN: 1'
+--- !u!114 &114154650491185852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1315681157915074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114171418062651732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -326,6 +346,48 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114330492290742606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1496438287649446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
+--- !u!114 &114447483580993688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1179740963296798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
+--- !u!114 &114499230050784640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1049102727341808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114571026639506014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -358,11 +420,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '[ key 1 ] MINING LASER: 999
+  m_Text: '[ key # 1 ] MINING LASER: 999
 
-    [ key 2 ] ARMY LASER: 0
+    [ key #2 ] ARMY LASER: 0
 
-    [ key 3 ] ROCKETS: 0'
+    [ key #3 ] ROCKETS: 0'
 --- !u!114 &114719142921251138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -398,6 +460,20 @@ MonoBehaviour:
   m_Text: "My ammunition is running low. Perhaps I will be able to disassemble this
     space debris from my MINING LASER and find ammunition?\r\n(destroy all the containers
     in the sector to find a way out)\n[PRESS TO CLOSE]"
+--- !u!114 &114839258812101792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1083522962512176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114856073662861278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -430,10 +506,24 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "[1] - Mining Laser\r\n[2] - Army Laser\r\n[3] - Rocket\r\n[W] - Forward\r\n[A]
+  m_Text: "[#1] - Mining Laser\r\n[#2] - Army Laser\r\n[#3] - Rocket\r\n[W] - Forward\r\n[A]
     - Yaw Left\r\n[D] - Yaw Right\r\n[Q] - Roll Left\r\n[E] - Roll Right\r\n[S] -
     Pitch Down\r\n[X] - Pitch Up\r\n[Shift+W] - Up\r\n[Shift+S] - Down\r\n[Shift+A]
     - Left\r\n[Shift+D] - Right\n[Space] - Next Turn\n[Right Mouse Btn] - Overview"
+--- !u!114 &114863065513312816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436241558109070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114913295751800310
 MonoBehaviour:
   m_ObjectHideFlags: 1

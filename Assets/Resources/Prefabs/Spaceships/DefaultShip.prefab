@@ -592,8 +592,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthCurrent: 5
   healthMax: 5
-  countAmmoArmy: 0
-  countAmmoRocket: 0
+  countAmmoArmy: 2
+  countAmmoRocket: 1
 --- !u!114 &114459512402689910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -605,6 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a5e0118dc4405469bfcc0e058d1b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisObject: {fileID: 0}
 --- !u!114 &114766903048650948
 MonoBehaviour:
   m_ObjectHideFlags: 1

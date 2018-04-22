@@ -59,7 +59,7 @@ public class GameScreenController : ScreenController
         turns.text = "TURN: " + spaceController.countTurns.ToString();
         sectors.text = "SECTOR: " + spaceController.countSectors.ToString();
 
-        ammo.text = string.Format("[ key 1 ] MINING LASER: 999\n[ key 2 ] ARMY LASER: {0}\n[ key 3 ] ROCKETS: {1}", player.thisObject.countAmmoArmy, player.thisObject.countAmmoRocket);
+        ammo.text = string.Format("[ key # 1 ] MINING LASER: 999\n[ key #2 ] ARMY LASER: {0}\n[ key #3 ] ROCKETS: {1}", player.thisObject.countAmmoArmy, player.thisObject.countAmmoRocket);
     }
 
     private void ShowWaiting(bool _value)
