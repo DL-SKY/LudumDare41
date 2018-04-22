@@ -29,6 +29,19 @@ public class SpaceObjects : MonoBehaviour
         healthCurrent = healthMax;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (tag == "Rocket")
+        {
+            var obj = other.GetComponent<SpaceObjects>();
+            if (obj)
+                obj.GetDamage(ConstGame.DAMAGE_U3);
+
+            healthCurrent = 1;
+            GetDamage(1);
+        }
+    }
+
     private void OnDestroy()
     {
         
@@ -36,6 +49,19 @@ public class SpaceObjects : MonoBehaviour
     #endregion
 
     #region Public methods
+    public void ToForwardRocket()
+    {
+        if (!isEndAnimation)
+            return;
+
+        var newPosition = transform.position + transform.forward * ConstGame.CELL_SIZE;
+
+        newPosition = new Vector3(  Mathf.RoundToInt(newPosition.x),
+                                    Mathf.RoundToInt(newPosition.y),
+                                    Mathf.RoundToInt(newPosition.z) );
+        rg.MovePosition(newPosition);
+    }
+
     public void ToForward()
     {
         if (!isEndAnimation)
@@ -250,7 +276,25 @@ public class SpaceObjects : MonoBehaviour
 
     public void ToUse3()
     {
+        if (!isEndAnimation)
+            return;
 
+        if (countAmmoRocket <= 0)
+        {
+            countAmmoRocket = 0;
+            return;
+        }
+        countAmmoRocket--;
+
+        var newPosition = transform.position + transform.forward * ConstGame.CELL_SIZE;
+        newPosition = new Vector3(  Mathf.RoundToInt(newPosition.x),
+                                    Mathf.RoundToInt(newPosition.y),
+                                    Mathf.RoundToInt(newPosition.z) );
+
+        var rocket = Instantiate(Resources.Load<GameObject>(ConstPrefabs.ROCKET), newPosition, transform.rotation, transform.parent);
+        var obj = rocket.GetComponent<SpaceObjects>();
+        if (obj)
+            spaceController.AddSpaceObject(obj);
     }
 
     public void ToUse4()
@@ -266,7 +310,10 @@ public class SpaceObjects : MonoBehaviour
     public void ToAITurn()
     {
         if (tag == "Rocket")
+        {
             GetDamage(1);
+            ToForwardRocket();
+        }
     }
 
     public void GetDamage(int _damage)
@@ -276,18 +323,40 @@ public class SpaceObjects : MonoBehaviour
 
         healthCurrent -= _damage;
 
-        var boom = Instantiate(Resources.Load<GameObject>(ConstPrefabs.PARTICLES_VOXELS), transform.position, Quaternion.identity, transform.parent);
-        Destroy(boom, 5.0f);
+        if (tag != "Rocket")
+        {
+            var boom = Instantiate(Resources.Load<GameObject>(ConstPrefabs.PARTICLES_VOXELS), transform.position, Quaternion.identity, transform.parent);
+            Destroy(boom, 5.0f);
+        }        
 
         if (healthCurrent <= 0)
         {
             //TODO:
-            if (gameObject.tag == "Block")
+            if (tag == "Block")
             {
-                Instantiate(Resources.Load<GameObject>(ConstPrefabs.AMMO_ARMY), transform.position, Quaternion.identity, transform.parent);
+                int dice = (Random.Range(6, 101) % 6) + 1;
+                Debug.Log("Dice: " + dice);
+
+                switch (dice)
+                {
+                    case 1:
+                        Instantiate(Resources.Load<GameObject>(ConstPrefabs.AMMO_ARMY), transform.position, Quaternion.identity, transform.parent);
+                        break;
+                    case 6:
+                        Instantiate(Resources.Load<GameObject>(ConstPrefabs.AMMO_ROCKET), transform.position, Quaternion.identity, transform.parent);
+                        break;
+                }
+
+                spaceController.DestroyBlock();
+            }
+            else if (tag == "Rocket")
+            {
+                var boom = Instantiate(Resources.Load<GameObject>(ConstPrefabs.PARTICLES_ROCKET_BOOM), transform.position, Quaternion.identity, transform.parent);
+                Destroy(boom, 5.0f);
             }
 
-            Destroy(this.gameObject);
+            if (tag != "Player")
+                Destroy(this.gameObject);
         }        
     }
     #endregion
@@ -303,7 +372,7 @@ public class SpaceObjects : MonoBehaviour
         {
             if (hit.rigidbody != rg)
             {
-                if (hit.rigidbody.tag != "AmmoArmy" || hit.rigidbody.tag != "AmmoRocket")
+                if (hit.rigidbody.tag != "AmmoArmy" && hit.rigidbody.tag != "AmmoRocket")
                 {
                     result = true;
                     break;

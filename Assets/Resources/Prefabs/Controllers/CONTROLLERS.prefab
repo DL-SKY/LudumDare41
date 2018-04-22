@@ -51,7 +51,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 100942c2425a6d74ebef10758e8dc2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  percentCube: 0.5
+  countSectors: 0
+  countTurns: 0
+  isInit: 0
+  isPlayerTurn: 0
+  percentCube: 1
+  percentEnemies: 0.09
   countVoxels: 0
   countVoid: 0
   countCube: 0
+  countEnemies: 0
+  objects: []

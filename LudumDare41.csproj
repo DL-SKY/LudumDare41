@@ -228,6 +228,7 @@
     <Compile Include="Assets\Scripts\Managers\CustomUIManager.cs" />
     <Compile Include="Assets\Scripts\Objects\SpaceObjects.cs" />
     <Compile Include="Assets\Scripts\Patterns\Singleton.cs" />
+    <Compile Include="Assets\Scripts\UI\GameScreenController.cs" />
     <Compile Include="Assets\Scripts\UI\ScreenController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

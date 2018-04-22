@@ -7,6 +7,9 @@ TagManager:
   - Spaceship
   - Block
   - Rocket
+  - AmmoArmy
+  - Undefined
+  - AmmoRocket
   layers:
   - Default
   - TransparentFX

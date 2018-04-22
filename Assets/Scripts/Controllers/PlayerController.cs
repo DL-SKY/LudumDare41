@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     #region Variables
+    public SpaceObjects thisObject;
 
-    private SpaceController spaceController;
-    private SpaceObjects thisObject;
+    private SpaceController spaceController;    
     #endregion
 
     #region Unity method  
@@ -112,18 +112,6 @@ public class PlayerController : MonoBehaviour
             thisObject.ToUse3();
             spaceController.EndPlayerTurn();
         }
-        //4
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            thisObject.ToUse4();
-            spaceController.EndPlayerTurn();
-        }
-        //5
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            thisObject.ToUse5();
-            spaceController.EndPlayerTurn();
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -132,6 +120,15 @@ public class PlayerController : MonoBehaviour
         {
             thisObject.countAmmoArmy += other.GetComponent<SpaceObjects>().countAmmoArmy;
             Destroy(other.gameObject);
+        }
+        else if (other.tag == "AmmoRocket")
+        {
+            thisObject.countAmmoRocket += other.GetComponent<SpaceObjects>().countAmmoRocket;
+            Destroy(other.gameObject);
+        }
+        else if (other.tag == "Exit")
+        {
+            spaceController.NewSector();
         }
     }
     #endregion

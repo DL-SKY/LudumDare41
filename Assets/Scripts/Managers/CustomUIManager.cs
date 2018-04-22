@@ -36,8 +36,7 @@ public class CustomUIManager : Singleton<CustomUIManager>
     #region Public methods
     public void ShowScreen(string _name, object _data = null)
     {
-        var path = "Prefabs/Screens";        
-        var screen = Instantiate(Resources.Load<GameObject>(Path.Combine(path, _name)), parentGUI).GetComponent<ScreenController>();
+        var screen = Instantiate(Resources.Load<GameObject>( _name), parentGUI).GetComponent<ScreenController>();
         screen.transform.SetAsLastSibling();
         screen.Initialize(_data);
 
